@@ -59,6 +59,11 @@ class BetterImagePattern(Pattern):
 if __name__ == '__main__':
     import markdown
     markdown_string = "~~[an image] (pic.jpg) @(height=100 width=100) @(h=50 w=50);"
-    extension_list = [BetterImageExtension()]
+    markdown_string_two = """![Licensing Page][license_page]
+    [license_page]: /support/public/graphics/construct/license_page_list.png height=442px width=775px"""
+    from figureAltCaption import FigureCaptionExtension
+    extension_list = [BetterImageExtension(), FigureCaptionExtension()]
     html_fragment = markdown.markdown(markdown_string, extensions=extension_list)
     print html_fragment
+    html_fragment_two = markdown.markdown(markdown_string_two, extensions=extension_list)
+    print html_fragment_two
